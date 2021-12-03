@@ -1,5 +1,4 @@
-import { newExpression } from "@babel/types";
-import axios from "axios";
+
 
 const Header = (title, date, temp) => {
   // TASK 1
@@ -14,26 +13,26 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
-  const headerDiv = document.querySelector('div');
-const dateSpan = document.querySelector('span');
-const titleElem = document.querySelector('h1');
-const tempSpan = document.querySelector('span');
+  const headerDiv = document.createElement('div');
+const dateSpan = document.createElement('span');
+const titleElem = document.createElement('h1');
+const tempSpan = document.createElement('span');
 
 headerDiv.classList.add('header');
 dateSpan.classList.add('date');
 tempSpan.classList.add('temp');
 
-dateSpan.textContent = date;
-titleElem.textContent = title;
-tempSpan.textContent = temp;
+dateSpan.textContent = `${date}`;
+titleElem.textContent = `${title}`;
+tempSpan.textContent = `${temp}`;
 
 headerDiv.appendChild(dateSpan);
-dateSpan.appendChild(titleElem);
+headerDiv.appendChild(titleElem);
 headerDiv.appendChild(tempSpan);
 
-return headerDiv;
+return headerDiv
 }
-// console.log(Header('title', 'date', 'temp'));
+
 const headerAppender = (selector) => {
   // TASK 2
   // ---------------------
@@ -41,10 +40,15 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
-  const headerElem = Header('Daily News', 'December 3, 2021', '65°');
-  selector.appendChild(headerElem);
+  
+  const selectorElem = document.querySelector('.header-container')
+  // const headerElem = Header('Daily News', 'December 3, 2021', '65°');
 
-  return headerElem;
+
+
+  selector.appendChild(Header('Daily News', 'December 3, 2021', '65°'));
+
+  return selectorElem;
 
 }
 
