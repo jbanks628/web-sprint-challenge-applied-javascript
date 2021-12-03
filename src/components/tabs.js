@@ -42,11 +42,10 @@ const tabsAppender = (selector) => {
 
   axios.get('http://localhost:5000/api/topics')
     .then(res => {
-       console.log(res.data.topics)
-       res.data.topics.forEach(arr => {
-         const tabElem = Tabs(arr);
-         tabSelector.appendChild(tabElem)
-       })
+       
+         const tabElem = Tabs(res.data.topics);
+         tabSelector.appendChild(tabElem);
+  
       })
     .catch(err => {
         console.error(err)

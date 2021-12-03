@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { javascript } from "webpack";
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -60,12 +61,14 @@ const cardAppender = (selector) => {
   const newCard = document.querySelector(selector);
   axios.get('http://localhost:5000/api/articles')
   .then(res => {
-    console.log(res.data.articles);
-      res.data.articles.forEach(e => {
-      const cardElem = Card(e);
-      newCard.appendChild(cardElem);
+    const item = res.data.articles;
+    item.javascript.forEach(i => newCard.appendChild(Card(i)));
+    item.bootstrap.forEach(i => newCard.appendChild(Card(i)));
+    item.jquery.forEach(i => newCard.appendChild(Card(i)));
+    item.node.forEach(i => newCard.appendChild(Card(i)));
+    item.technology.forEach(i => newCard.appendChild(Card(i)));
     })
-  })
+  
   .catch(err => console.error(err));
 }
 
